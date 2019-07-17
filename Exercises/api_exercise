@@ -1,0 +1,30 @@
+EXERCISE:
+Given the below json data and URI's use Postman to configure a new loopback
+interface on your CSR1000v. Use Postman to create a
+Python program that will do the same. Use the GET method to
+verify your loopback interface was created.
+
+PUT - https://{{CSR-IP}}/restconf/data/ietf-interfaces:interfaces/interface=Loopback0
+GET - https://{{CSR-IP}}/restconf/data/ietf-interfaces:interfaces
+
+
+JSON Data:
+
+{
+    "ietf-interfaces:interface": {
+        "name": "Loopback0",
+        "description" : "lo0",
+        "type": "iana-if-type:softwareLoopback",
+        "enabled": true,
+        "ietf-ip:ipv4": {
+            "address": [
+                {
+                    "ip": "11.2.3.254",
+                    "netmask": "255.255.255.255"
+                }
+            ]
+        },
+        "ietf-ip:ipv6": {}
+    }
+}
+

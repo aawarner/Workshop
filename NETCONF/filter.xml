@@ -1,0 +1,36 @@
+<filter>
+    <routing xmlns="urn:ietf:params:xml:ns:yang:ietf-routing">
+			<routing-instance>
+				<name>mgmt-intf</name>
+				<interfaces>
+					<interface>GigabitEthernet1</interface>
+				</interfaces>
+				<routing-protocols>
+					<routing-protocol>
+						<type>static</type>
+						<name>1</name>
+						<static-routes>
+							<ipv4 xmlns="urn:ietf:params:xml:ns:yang:ietf-ipv4-unicast-routing">
+								<route>
+									<destination-prefix>0.0.0.0/0</destination-prefix>
+									<next-hop>
+										<next-hop-address>172.16.82.1</next-hop-address>
+									</next-hop>
+								</route>
+							</ipv4>
+						</static-routes>
+					</routing-protocol>
+				</routing-protocols>
+			</routing-instance>
+			<routing-instance>
+				<name>default</name>
+				<description>default-vrf [read-only]</description>
+				<routing-protocols>
+					<routing-protocol>
+						<type>static</type>
+						<name>1</name>
+					</routing-protocol>
+				</routing-protocols>
+			</routing-instance>
+		</routing>
+</filter>
