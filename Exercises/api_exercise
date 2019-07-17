@@ -7,6 +7,8 @@ verify your loopback interface was created.
 PUT - https://{{CSR-IP}}/restconf/data/ietf-interfaces:interfaces/interface=Loopback0
 GET - https://{{CSR-IP}}/restconf/data/ietf-interfaces:interfaces
 
+Headers: Accept: application/yang-data+json
+         Content-Type: application/yang-data+json
 
 JSON Data:
 
