@@ -1,0 +1,354 @@
+{
+	"info": {
+		"_postman_id": "03d387b9-3d74-4764-8d84-0827737121b6",
+		"name": "Workshop",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "DeckOfCards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://deckofcardsapi.com/api/deck/new/",
+					"protocol": "https",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeckOfCards 6 Decks",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=6",
+					"protocol": "https",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"new",
+						"shuffle",
+						""
+					],
+					"query": [
+						{
+							"key": "deck_count",
+							"value": "6"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeckOfCards Draw Cards",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://deckofcardsapi.com/api/deck/<<deck_id>>/draw/?count=5",
+					"protocol": "https",
+					"host": [
+						"deckofcardsapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"deck",
+						"<<deck_id>>",
+						"draw",
+						""
+					],
+					"query": [
+						{
+							"key": "count",
+							"value": "5"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams List Rooms",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "MzhhNGQ3NzAtNTE0ZS00Yzg1LTk3MzYtOGZiZjUyZDk2NzRiYjcxN2QwZjUtZWU2_PF84_1eb65fdf-9643-417f-9974-ad72cae0e10f",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/rooms",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"rooms"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams People Details Me",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/people/me",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"people",
+						"me"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams People Details Kris",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/people?displayName=Kris Swanson",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"people"
+					],
+					"query": [
+						{
+							"key": "displayName",
+							"value": "Kris Swanson"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams Teams",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/teams?max=50",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"teams"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "50"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams Create a Team",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Tampa Devnet Workshop\"\n}"
+				},
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/teams",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"teams"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams Add Kris To Team",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"teamId\": \"Y2lzY29zcGFyazovL3VzL1RFQU0vN2MxZDkxOTAtYTgwYi0xMWU5LTg3OTgtMzczOTIyNTJhNzQ4\",\n  \"personEmail\": \"kriswans@cisco.com\",\n  \"isModerator\": true\n}"
+				},
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/team/memberships",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"team",
+						"memberships"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Webex Teams Delete Team",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "{{bearer token}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Tampa Devnet Workshop\"\n}"
+				},
+				"url": {
+					"raw": "https://api.ciscospark.com/v1/teams/Y2lzY29zcGFyazovL3VzL1RFQU0vN2MxZDkxOTAtYTgwYi0xMWU5LTg3OTgtMzczOTIyNTJhNzQ4",
+					"protocol": "https",
+					"host": [
+						"api",
+						"ciscospark",
+						"com"
+					],
+					"path": [
+						"v1",
+						"teams",
+						"Y2lzY29zcGFyazovL3VzL1RFQU0vN2MxZDkxOTAtYTgwYi0xMWU5LTg3OTgtMzczOTIyNTJhNzQ4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
