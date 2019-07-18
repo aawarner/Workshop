@@ -16,7 +16,8 @@ with manager.connect(
 
 
     route_details = xmltodict.parse(netconf_reply.xml)["rpc-reply"]["data"]
-    protocols = route_details["routing"]["routing-instance"][1]["routing-protocols"]
+    protocols = route_details["routing"]["routing-instance"][0]["routing-protocols"]
+
 
     print("*" * 80)
     print("Current Routing Configuration:\n")

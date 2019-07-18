@@ -18,6 +18,7 @@ with manager.connect(
     route_details = xmltodict.parse(netconf_reply.xml)["rpc-reply"]["data"]
     protocols = route_details["routing"]["routing-instance"][0]["routing-protocols"]
 
+    print(protocols)
     print(xml.dom.minidom.parseString(str(netconf_reply)).toprettyxml())
 
     print("*" * 80)
@@ -27,8 +28,7 @@ with manager.connect(
     print("Network   Nexthop\n")
     print(
         protocols["routing-protocol"]["static-routes"]["ipv4"]["route"]
-        .get("destination-prefix")
-        .get("#text")
+        .get("destination-prefix").get("#text")
         + " "
         + protocols["routing-protocol"]["static-routes"]["ipv4"]["route"]
         .get("next-hop")

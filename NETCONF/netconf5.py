@@ -6,7 +6,7 @@ netconf_template = f.read()
 f.close()
 
 
-netconf_payload = netconf_template.format(ip_address="200.100.100.0/24", next_hop_ip="10.10.10.1")
+netconf_payload = netconf_template.format(ip_address="202.100.100.0/24", next_hop_ip="10.10.10.1")
 
 print("Configuration Payload:")
 print("-" * 30)

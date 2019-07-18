@@ -1,5 +1,6 @@
 import netmiko
 from datetime import datetime
+import sys
 
 f = open("devices.txt", "r")
 devices = f.read()
@@ -12,7 +13,7 @@ start_time = datetime.now()
 for device in devices:
     try:
         connection = netmiko.ConnectHandler(
-            ip=device, device_type="cisco_ios", username="cisco", password="cisco"
+            ip=device, device_type="cisco_ios", username="cisco", password="cisco", timeout=10
         )
         print("#" * 80)
         print(connection.send_command("show Run"))
@@ -20,6 +21,7 @@ for device in devices:
         connection.disconnect()
     except (netmiko.NetMikoTimeoutException, netmiko.NetMikoAuthenticationException,) as e:
         print(e)
+        sys.exit()
 
 
 print("\nElapsed time: " + str(datetime.now() - start_time))

@@ -1,0 +1,9 @@
+config term
+Enter configuration commands, one per line.  End with CNTL/Z.
+instructor01-CSR(config)#ip access-list extended python_acl
+instructor01-CSR(config-ext-nacl)#remark ACL added by Python
+instructor01-CSR(config-ext-nacl)#permit ip any host 1.2.3.4
+instructor01-CSR(config-ext-nacl)#permit ip host 1.2.3.4 any
+instructor01-CSR(config-ext-nacl)#deny ip any any
+instructor01-CSR(config-ext-nacl)#end
+instructor01-CSR#

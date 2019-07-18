@@ -14,7 +14,7 @@
 								<route>
 									<destination-prefix>0.0.0.0/0</destination-prefix>
 									<next-hop>
-										<next-hop-address>172.16.82.1</next-hop-address>
+										<next-hop-address>10.10.10.1</next-hop-address>
 									</next-hop>
 								</route>
 							</ipv4>

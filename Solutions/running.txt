@@ -1,0 +1,210 @@
+version 16.9
+service timestamps debug datetime msec
+service timestamps log datetime msec
+platform qfp utilization monitor load 80
+no platform punt-keepalive disable-kernel-core
+platform console virtual
+!
+hostname instructor01-CSR
+!
+boot-start-marker
+boot-end-marker
+!
+!
+vrf definition mgmt-intf
+ !
+ address-family ipv4
+ exit-address-family
+!
+enable secret 5 $1$Su6s$jtSJkbaCE6ko1QQNPSbxx/
+!
+no aaa new-model
+!
+!
+!
+!
+!
+!
+!
+ip domain name lab.local
+!
+!
+!
+login on-success log
+!
+!
+!
+!
+!
+!
+!
+subscriber templating
+! 
+! 
+! 
+! 
+!
+multilink bundle-name authenticated
+!
+!
+!
+!
+!
+crypto pki trustpoint TP-self-signed-3532486306
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-3532486306
+ revocation-check none
+ rsakeypair TP-self-signed-3532486306
+!
+!
+crypto pki certificate chain TP-self-signed-3532486306
+ certificate self-signed 01
+  30820330 30820218 A0030201 02020101 300D0609 2A864886 F70D0101 05050030 
+  31312F30 2D060355 04031326 494F532D 53656C66 2D536967 6E65642D 43657274 
+  69666963 6174652D 33353332 34383633 3036301E 170D3139 30363238 31383539 
+  34345A17 0D333030 31303130 30303030 305A3031 312F302D 06035504 03132649 
+  4F532D53 656C662D 5369676E 65642D43 65727469 66696361 74652D33 35333234 
+  38363330 36308201 22300D06 092A8648 86F70D01 01010500 0382010F 00308201 
+  0A028201 0100BF6B C8F48501 5DAC1B4F 03B53AFF 6E01339E 594E2910 9C445CBB 
+  43D7EB56 B97F83AB A39B7F12 2555DC4D D31B707E BFB3C941 359E9443 5AF98794 
+  A5E36192 49D1E7D8 FE2C31AC 540DE440 4A4F780C 7E534DEB 29D1ED4C B56A3D4D 
+  655E3608 798DFDDC 397B5B36 AEA7F9DE 288FC236 7F2FFD73 0411AACF 99CBCAE7 
+  B61C1A20 DBA5ACB0 586E873D D36A9887 0C663566 26BB0B4F DE5EA376 08D3592C 
+  E66639C9 7BB85E3B 4BF4AC5E 27576262 D9029C3E E164EE67 08EA5E24 BFE4EA29 
+  4409C035 CEBF0C60 AF45E6DE A8A7B4AA 7D6D0063 19045BE3 0E36ADE8 2FF9DCAD 
+  1864CEE0 50249852 D4C43F26 ED50C422 F34A0F18 836C4442 3B2029B2 4349BD86 
+  028B069C 94C90203 010001A3 53305130 0F060355 1D130101 FF040530 030101FF 
+  301F0603 551D2304 18301680 1497FF56 82C69210 965F8CB8 62260CD3 2EF036D7 
+  61301D06 03551D0E 04160414 97FF5682 C6921096 5F8CB862 260CD32E F036D761 
+  300D0609 2A864886 F70D0101 05050003 82010100 9AE59F6B 7EA631CC AA9AC522 
+  E7456FEA 2CF0DDF4 06E863F6 89F5FD01 210A3E6C 7C80C2DD E1E68149 EC7DFD4C 
+  E9F1BA7C 24D12FE6 9423C78D 99BE0672 72344374 663FE859 8A7D1EED 85B72CCE 
+  E3662B68 16FEBECF 64012314 297EAE6C 852010FE 8D3A2C9E 8C704B99 6CCA2FA3 
+  194018D3 E43D0A26 A77AE76D 585A3C5F 42DA7198 F01916D8 287229D4 2C95252B 
+  9C97C865 8F711140 31377BE0 F8336166 1123D9FD 770E7B7D 4F9AE99E 483A1D83 
+  0224EB28 FCC74927 16ED9496 8AE15B49 19000426 96ACE504 30497422 161C1FA4 
+  E4D28792 7FDA6D70 5A432A64 20A1A9C3 69BA4C54 022AC024 6ABA44B0 F40B357D 
+  C75652CD 09C59D29 CE2B9929 E19DA4AB 166FE008
+  	quit
+!
+!
+!
+!
+!
+!
+!
+!
+license udi pid CSR1000V sn 9FD6O4VGQ6V
+license accept end user agreement
+license boot level ax
+no license smart enable
+diagnostic bootup level minimal
+!
+spanning-tree extend system-id
+!
+netconf-yang
+!
+restconf
+!
+username cisco privilege 15 secret 5 $1$nK2U$Sh5Dyo2SNh8n/Kr4Crkzk1
+!
+redundancy
+!
+!
+!
+!
+!
+!
+! 
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+!
+! 
+! 
+!
+!
+interface Loopback0
+ description lo0
+ ip address 11.2.3.254 255.255.255.255
+!
+interface Loopback10
+ description netmiko loopback
+ ip address 192.222.1.10 255.255.255.255
+!
+interface Loopback50
+ description netmiko interface
+ ip address 201.1.1.1 255.255.255.255
+!
+interface Loopback51
+ ip address 202.1.1.1 255.255.255.255
+!
+interface GigabitEthernet1
+ vrf forwarding mgmt-intf
+ ip address 10.10.10.145 255.255.255.0
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet2
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+interface GigabitEthernet3
+ no ip address
+ shutdown
+ negotiation auto
+ no mop enabled
+ no mop sysid
+!
+ip forward-protocol nd
+ip http server
+ip http authentication local
+ip http secure-server
+ip route vrf mgmt-intf 0.0.0.0 0.0.0.0 10.10.10.1
+!
+ip ssh rsa keypair-name ssh-key
+ip ssh version 2
+ip scp server enable
+!
+!
+ip access-list extended python_acl
+ remark ACL added by Python
+ permit ip any host 1.2.3.4
+ permit ip host 1.2.3.4 any
+ deny   ip any any
+!
+!
+!
+!
+control-plane
+!
+!
+!
+!
+!
+!
+line con 0
+ stopbits 1
+line vty 0 4
+ login local
+ transport input ssh
+!
+netconf ssh
+!
+!
+!
+!
+!
+end
