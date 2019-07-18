@@ -5,7 +5,7 @@ devices = f.read()
 devices = devices.strip().splitlines()
 f.close()
 
-config = ["router ospf 1", "network 172.16.82.0 255.255.255.0", "passive-interface default"]
+config = ["router ospf 1", "network 11.10.10.0 255.255.255.0 area 0", "passive-interface default"]
 
 for device in devices:
     try:
@@ -14,5 +14,6 @@ for device in devices:
         )
         connection.send_config_set(config)
         print(connection.send_command("show run | beg router ospf"))
+        connection.disconnect()
     except (n.NetMikoTimeoutException, n.NetMikoAuthenticationException,) as e:
         print(e)

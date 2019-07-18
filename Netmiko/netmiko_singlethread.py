@@ -17,10 +17,12 @@ for device in devices:
         print("#" * 80)
         print(connection.send_command("show Run"))
         print("#" * 80)
+        connection.disconnect()
     except (netmiko.NetMikoTimeoutException, netmiko.NetMikoAuthenticationException,) as e:
         print(e)
 
 
 print("\nElapsed time: " + str(datetime.now() - start_time))
 print("Configuration collection finished")
+
 

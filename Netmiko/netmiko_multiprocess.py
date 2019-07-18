@@ -20,6 +20,7 @@ def command(device):
         print(connection.send_command_expect("show run"))
         print("#" * 80)
         print()
+        connection.disconnect()
     except (netmiko.NetMikoTimeoutException, netmiko.NetMikoAuthenticationException,) as e:
         print(e)
 
